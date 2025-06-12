@@ -1,0 +1,1023 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+
+    <title>Dashboard</title>
+
+    <link href="assets/img/favicon.png" rel="icon" />
+
+    <link href="https://fonts.gstatic.com" rel="preconnect" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+      rel="stylesheet"
+    />
+
+    <link
+      href="assets/vendor/bootstrap/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="assets/vendor/bootstrap-icons/bootstrap-icons.css"
+      rel="stylesheet"
+    />
+    <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet" />
+    <link href="assets/vendor/simple-datatables/style.css" rel="stylesheet" />
+
+    <link href="assets/css/style.css" rel="stylesheet" />
+  </head>
+
+  <body>
+    <div
+      class="modal fade"
+      id="exampleModal"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog main-popup-dailog">
+        <div class="modal-content main-popup">
+          <div class="modal-header main-popup-header justify-content-center">
+            <h1
+              class="modal-title fs-3 text-white text-center"
+              id="exampleModalLabel"
+            >
+              Important News !
+            </h1>
+          </div>
+          <div class="modal-body text-white fw-semibold text-center">
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Unde
+            deserunt dolores mollitia placeat quasi adipisci minima fugiat earum
+            quas culpa ducimus, porro tempore aliquam voluptatum. Minima
+            mollitia asperiores vel nobis cupiditate repudiandae recusandae
+            tempora libero neque illum in voluptate, necessitatibus similique
+            facere fugiat natus, quasi reprehenderit corporis doloremque, magni
+            dolorum?
+          </div>
+        </div>
+      </div>
+    </div>
+    <header id="header" class="header fixed-top d-flex align-items-center">
+      <div class="d-flex align-items-center justify-content-between">
+        <a href="index.html" class="logo-full d-flex align-items-center">
+          <img src="assets/img/logo.png" alt="logo" />
+        </a>
+        <i class="bi bi-list toggle-sidebar-btn"></i>
+      </div>
+      <nav class="header-nav ms-auto">
+        <ul class="d-flex align-items-center">
+          <li class="nav-item dropdown pe-3">
+            <a
+              class="nav-link nav-profile d-flex align-items-center pe-0"
+              href="#"
+              data-bs-toggle="dropdown"
+            >
+              <img
+                src="assets/img/profile-img.jpg"
+                alt="Profile"
+                class="rounded-circle"
+              />
+            </a>
+            <ul
+              class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile"
+            >
+              <li class="dropdown-header">
+                <h6 id="header-user-id">Loading...</h6>
+              </li>
+              <li>
+                <hr class="dropdown-divider" />
+              </li>
+              <li>
+                <a class="dropdown-item d-flex align-items-center" href="#">
+                  <i class="bi bi-box-arrow-right"></i>
+                  <span>Sign Out</span>
+                </a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+    </header>
+    <aside id="sidebar" class="sidebar">
+      <ul class="sidebar-nav" id="sidebar-nav">
+        <li class="nav-item">
+          <a class="nav-link" href="index.html">
+            <i class="bi bi-grid"></i>
+            <span>Dashboard</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link collapsed" href="support.html">
+            <i class="bi bi-headset"></i>
+            <span>Support</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link collapsed" href="team.html">
+            <i class="bi bi-people"></i>
+            <span>Team</span>
+          </a>
+        </li>
+        
+        <li class="nav-item">
+          <a
+            class="nav-link collapsed auto-id"
+            data-bs-toggle="collapse"
+            href="#"
+          >
+            <i class="bx bx-dollar"></i><span>Incomes</span
+            ><i class="bi bi-chevron-down ms-auto"></i>
+          </a>
+          <ul class="nav-content collapse" data-bs-parent="#sidebar-nav">
+            <li>
+              <a href="transactions.html">
+                <i class="bi bi-circle"></i><span>Transactions</span>
+              </a>
+            </li>
+            <li>
+              <a href="withdrawal.html">
+                <i class="bi bi-circle"></i><span>Withdrawal</span>
+              </a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </aside>
+    <main id="main" class="main">
+      <div class="marque-line mb-0">
+        <marquee onmouseover="this.stop();" onmouseout="this.start();">
+          <h3
+            style="font-size: 20px; font-weight: 700; color: white; margin: 0"
+          >
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sequi non
+            consequatur alias ipsam, iste dicta quidem error aliquid
+            consequuntur placeat recusandae dolore distinctio asperiores quod
+            porro aspernatur totam, quas exercitationem.
+          </h3>
+        </marquee>
+      </div>
+      <section class="section dashboard">
+        <div class="row g-3 mt-0 d-lg-none">
+          <div class="col-12">
+            <div class="common-card">
+              <div
+                class="d-flex justify-content-between align-items-center"
+                style="
+                  border-bottom: 1px solid #32cd32;
+                  padding-bottom: 10px;
+                  margin-bottom: 10px;
+                "
+              >
+                <p class="m-0 text-white fs_20px fs_14px">User Id:</p>
+                <p
+                  class="m-0 header-card-text fs_20px fs_14px"
+                  id="mobile-user-id"
+                >
+                  Loading...
+                </p>
+              </div>
+              <div
+                class="d-flex justify-content-between align-items-center"
+                style="
+                  border-bottom: 1px solid #32cd32;
+                  padding-bottom: 10px;
+                  margin-bottom: 10px;
+                "
+              >
+                <p class="m-0 text-white fs_20px fs_14px">Active Package:</p>
+                <p
+                  class="m-0 header-card-text fs_20px fs_14px"
+                  id="mobile-active-package"
+                >
+                  Loading...
+                </p>
+              </div>
+              <div
+                class="d-flex justify-content-between align-items-center"
+                style="
+                  border-bottom: 1px solid #32cd32;
+                  padding-bottom: 10px;
+                  margin-bottom: 10px;
+                "
+              >
+                <p class="m-0 text-white fs_20px fs_14px">Registration Time:</p>
+                <p
+                  class="m-0 header-card-text fs_20px fs_14px"
+                  id="mobile-registration-time"
+                >
+                  Loading...
+                </p>
+              </div>
+              <div class="d-flex justify-content-between align-items-center">
+                <p class="m-0 text-white fs_20px fs_14px">Contract Address:</p>
+                <div class="d-flex align-items-center">
+                  <p
+                    class="m-0 header-card-text fs_20px fs_14px"
+                    style="
+                      overflow: hidden;
+                      text-overflow: ellipsis;
+                      white-space: nowrap;
+                      max-width: 150px;
+                    "
+                    id="mobile-contract-address"
+                  >
+                    Loading...
+                  </p>
+                  <i
+                    class="bx bx-copy"
+                    id="copy-address-btn"
+                    style="
+                      font-size: 20px;
+                      color: #00ffff;
+                      cursor: pointer;
+                      margin-left: 8px;
+                    "
+                    onclick="copyAddress()"
+                  ></i>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-7">
+            <div class="common-card">
+              <div class="sub-card">
+                <p
+                  class="m-0 text-white text-center fs_20px"
+                  style="
+                    border-bottom: 1px solid var(--primary);
+                    padding-bottom: 4px;
+                  "
+                >
+                  Referral Link
+                </p>
+                <div class="d-flex align-items-center gap-2 py-2">
+                  <p
+                    id="copy-status-mobile"
+                    class="m-0 fw-semibold text-white fs_18px"
+                  >
+                    Copy Link
+                  </p>
+                  <i
+                    id="copy-icon-mobile"
+                    class="bx bx-copy-alt text-white"
+                    style="font-size: 18px"
+                  ></i>
+                </div>
+                <p
+                  id="text-to-copy-mobile"
+                  class="fs_16px"
+                  style="
+                    overflow: hidden;
+                    border-radius: 8px;
+                    text-overflow: ellipsis;
+                    color: white;
+                    padding: 4px;
+                    border: 2px solid var(--primary);
+                    margin: 0;
+                  "
+                >
+                  Loading referral link...
+                </p>
+                <button class="copy-btn" onclick="copyText('mobile')">Copy</button>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-5">
+            <div
+              class="common-card d-flex align-items-center justify-content-center"
+            >
+              <div class="row g-3 w-100">
+                <div class="col-12">
+                  <div class="sub-card gap-3 d-flex align-items-center">
+                    <i
+                      class="bx bx-refresh"
+                      style="
+                        color: #ff6347;
+                        font-size: 60px;
+                        transition: color 0.3s ease;
+                      "
+                    ></i>
+                    <a
+                      class="common-btn mt-0"
+                      href="../moto-wealth-dashboard/recharge.html"
+                    >
+                      Recharge
+                    </a>
+                  </div>
+                </div>
+                <div class="col-12">
+                  <div class="sub-card gap-3 d-flex align-items-center">
+                    <i
+                      class="bx bx-download"
+                      style="
+                        color: #00fa9a;
+                        font-size: 60px;
+                        transition: color 0.3s ease;
+                      "
+                    ></i>
+                    <a
+                      class="common-btn mt-0"
+                      href="withdrawal.html"
+                    >
+                      Withdraw
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row align-items-center g-3 mt-0">
+          <div class="col-lg-6">
+            <div class="row g-3 hero-cards-row">
+              <div class="col-md-6">
+                <div
+                  class="common-card position-relative d-flex justify-content-between align-items-center"
+                >
+                  <div>
+                    <h3>Total Income</h3>
+                    <span id="toalincome">$0</span>
+                  </div>
+                  <i
+                    class="bx bx-wallet"
+                    style="font-size: 48px; color: #4caf50"
+                  ></i>
+                  <div class="coin-effect">
+                    <img class="w-100" src="assets/img/coin.svg" alt="coin" />
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-6">
+                <div
+                  class="common-card position-relative d-flex justify-content-between align-items-center"
+                >
+                  <div>
+                    <h3>Today's Income</h3>
+                    <span id="todayincome">$0</span>
+                    <!-- ✅ Added ID -->
+                  </div>
+                  <i
+                    class="bx bx-calendar"
+                    style="font-size: 48px; color: #ff1493"
+                  ></i>
+                  <div class="coin-effect">
+                    <img class="w-100" src="assets/img/coin.svg" alt="coin" />
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-6">
+                <div
+                  class="common-card position-relative d-flex justify-content-between align-items-center"
+                >
+                  <div>
+                    <h3>Active Team</h3>
+                    <span id="activeteam">0 Members</span>
+                    <!-- ✅ Added ID -->
+                  </div>
+                  <div class="d-flex flex-column align-items-end">
+                    <i
+                      class="bx bx-group"
+                      style="font-size: 36px; color: #ff9800"
+                    ></i>
+                  </div>
+                  <div class="coin-effect">
+                    <img class="w-100" src="assets/img/coin.svg" alt="coin" />
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-6">
+                <div
+                  class="common-card position-relative d-flex justify-content-between align-items-center"
+                >
+                  <div>
+                    <h3>Total Team</h3>
+                    <span id="totalteam">0 Members</span>
+                  </div>
+                  <i
+                    class="bx bx-network-chart"
+                    style="font-size: 48px; color: #00e5ff"
+                  ></i>
+                  <div class="coin-effect">
+                    <img class="w-100" src="assets/img/coin.svg" alt="coin" />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6 d-none d-lg-block">
+            <div class="common-card">
+              <div
+                class="d-flex justify-content-between align-items-center"
+                style="
+                  border-bottom: 1px solid #32cd32;
+                  padding-bottom: 10px;
+                  margin-bottom: 10px;
+                "
+              >
+                <p class="m-0 text-white fs_20px fs_14px">User Id:</p>
+                <p
+                  class="m-0 header-card-text fs_20px fs_14px"
+                  id="desktop-user-id"
+                >
+                  Loading...
+                </p>
+              </div>
+              <div
+                class="d-flex justify-content-between align-items-center"
+                style="
+                  border-bottom: 1px solid #32cd32;
+                  padding-bottom: 10px;
+                  margin-bottom: 10px;
+                "
+              >
+                <p class="m-0 text-white fs_20px fs_14px">Active Package:</p>
+                <p
+                  class="m-0 header-card-text fs_20px fs_14px"
+                  id="desktop-active-package"
+                >
+                  Loading...
+                </p>
+              </div>
+              <div
+                class="d-flex justify-content-between align-items-center"
+                style="
+                  border-bottom: 1px solid #32cd32;
+                  padding-bottom: 10px;
+                  margin-bottom: 10px;
+                "
+              >
+                <p class="m-0 text-white fs_20px fs_14px">Registration Time:</p>
+                <p
+                  class="m-0 header-card-text fs_20px fs_14px"
+                  id="desktop-registration-time"
+                >
+                  Loading...
+                </p>
+              </div>
+              <div class="d-flex justify-content-between align-items-center">
+                <p class="m-0 text-white fs_20px fs_14px">Contract Address:</p>
+                <div class="d-flex align-items-center">
+                  <p
+                    class="m-0 header-card-text fs_20px fs_14px"
+                    style="
+                      overflow: hidden;
+                      text-overflow: ellipsis;
+                      white-space: nowrap;
+                      max-width: 150px;
+                    "
+                    id="desktop-contract-address"
+                  >
+                    Loading...
+                  </p>
+                  <i
+                    class="bx bx-copy"
+                    id="copy-address-btn-desktop"
+                    style="
+                      font-size: 20px;
+                      color: #00ffff;
+                      cursor: pointer;
+                      margin-left: 8px;
+                    "
+                    onclick="copyAddress('desktop-contract-address')"
+                  ></i>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row g-3 mt-0 d-none d-lg-flex">
+          <div class="col-lg-7">
+            <div class="common-card">
+              <div class="sub-card">
+                <p
+                  class="m-0 text-white text-center fs_20px"
+                  style="
+                    border-bottom: 1px solid var(--primary);
+                    padding-bottom: 4px;
+                  "
+                >
+                  Referral Link
+                </p>
+                <div class="d-flex align-items-center gap-2 py-2">
+                  <p
+                    id="copy-status-desktop"
+                    class="m-0 fw-semibold text-white fs_18px"
+                  >
+                    Copy Link
+                  </p>
+                  <i
+                    id="copy-icon-desktop"
+                    class="bx bx-copy-alt text-white"
+                    style="font-size: 18px"
+                  ></i>
+                </div>
+                <p
+                  id="text-to-copy-desktop"
+                  class="fs_16px"
+                  style="
+                    overflow: hidden;
+                    border-radius: 8px;
+                    text-overflow: ellipsis;
+                    color: white;
+                    padding: 4px;
+                    border: 2px solid var(--primary);
+                    margin: 0;
+                  "
+                >
+                  Loading referral link...
+                </p>
+                <button class="copy-btn" onclick="copyText('desktop')">Copy</button>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-5">
+            <div
+              class="common-card d-flex align-items-center justify-content-center"
+            >
+              <div class="row g-3 w-100">
+                <div class="col-12">
+                  <div class="sub-card gap-3 d-flex align-items-center">
+                    <i
+                      class="bx bx-refresh"
+                      style="
+                        color: #ff6347;
+                        font-size: 60px;
+                        transition: color 0.3s ease;
+                      "
+                    ></i>
+                    <a
+                      class="common-btn mt-0"
+                      href="../moto-wealth-dashboard/recharge.html"
+                    >
+                      Recharge
+                    </a>
+                  </div>
+                </div>
+                <div class="col-12">
+                  <div class="sub-card gap-3 d-flex align-items-center">
+                    <i
+                      class="bx bx-download"
+                      style="
+                        color: #00fa9a;
+                        font-size: 60px;
+                        transition: color 0.3s ease;
+                      "
+                    ></i>
+                    <a
+                      class="common-btn mt-0"
+                      href="withdrawal.html"
+                    >
+                      Withdraw
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row income_cards_row g-3 mt-0">
+          <div class="col-md-6 col-lg-3">
+            <a href="#">
+              <div class="common-card position-relative">
+                <div class="d-flex justify-content-between align-items-center">
+                  <div class="text-start">
+                    <p class="text-white" style="font-weight: 600">
+                      Total Team
+                    </p>
+                    <h4 class="text-white" style="font-weight: 600">
+                      <span id="totalteam-2">0</span>
+                    </h4>
+                  </div>
+                  <div
+                    class="icon-circle"
+                    style="
+                      background: radial-gradient(
+                        circle,
+                        rgba(113, 199, 255, 1) 50%,
+                        rgba(255, 255, 255, 0.6) 100%
+                      );
+                    "
+                  >
+                    <i class="bi bi-people-fill"></i>
+                  </div>
+                </div>
+                <div class="coin-effect">
+                  <img class="w-100" src="assets/img/coin.svg" alt="coin" />
+                </div>
+              </div>
+            </a>
+          </div>
+
+          <div class="col-md-6 col-lg-3">
+            <a href="#">
+              <div class="common-card position-relative">
+                <div class="d-flex justify-content-between align-items-center">
+                  <div class="text-start">
+                    <p class="text-white" style="font-weight: 600">
+                      Active Team
+                    </p>
+                    <h4 class="text-white" style="font-weight: 600">
+                      <span id="activeteam-2">0</span>
+                    </h4>
+                  </div>
+                  <div
+                    class="icon-circle"
+                    style="
+                      background: radial-gradient(
+                        circle,
+                        rgba(199, 113, 255, 1) 50%,
+                        rgba(255, 255, 255, 0.6) 100%
+                      );
+                    "
+                  >
+                    <i class="bx bx-user-check"></i>
+                  </div>
+                </div>
+                <div class="coin-effect">
+                  <img class="w-100" src="assets/img/coin.svg" alt="coin" />
+                </div>
+              </div>
+            </a>
+          </div>
+
+          <div class="col-md-6 col-lg-3">
+            <a href="#">
+              <div class="common-card position-relative">
+                <div class="d-flex justify-content-between align-items-center">
+                  <div class="text-start">
+                    <p class="text-white" style="font-weight: 600">
+                      Direct Team
+                    </p>
+                    <h4
+                      class="text-white"
+                      style="font-weight: 600"
+                      id="directteam"
+                    >
+                      Loading...
+                    </h4>
+                  </div>
+                  <div
+                    class="icon-circle"
+                    style="
+                      background: radial-gradient(
+                        circle,
+                        rgba(255, 113, 199, 1) 50%,
+                        rgba(255, 255, 255, 0.6) 100%
+                      );
+                    "
+                  >
+                    <i class="bi bi-person-lines-fill"></i>
+                  </div>
+                </div>
+                <div class="coin-effect">
+                  <img class="w-100" src="assets/img/coin.svg" alt="coin" />
+                </div>
+              </div>
+            </a>
+          </div>
+
+          <div class="col-md-6 col-lg-3">
+            <a href="#">
+              <div class="common-card position-relative">
+                <div class="d-flex justify-content-between align-items-center">
+                  <div class="text-start">
+                    <p class="text-white" style="font-weight: 600">
+                      Total Withdraw
+                    </p>
+                    <h4
+                      class="text-white"
+                      style="font-weight: 600"
+                      id="totalwithdraw"
+                    >
+                      Loading...
+                    </h4>
+                  </div>
+                  <div
+                    class="icon-circle"
+                    style="
+                      background: radial-gradient(
+                        circle,
+                        rgba(113, 255, 199, 1) 50%,
+                        rgba(255, 255, 255, 0.6) 100%
+                      );
+                    "
+                  >
+                    <i class="bx bx-wallet-alt"></i>
+                  </div>
+                </div>
+                <div class="coin-effect">
+                  <img class="w-100" src="assets/img/coin.svg" alt="coin" />
+                </div>
+              </div>
+            </a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="copyright text-white">
+        © Copyright
+        <strong><span class="color-secondary">ProjectName.</span></strong> All
+        Rights Reserved
+      </div>
+    </footer>
+    <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/vendor/simple-datatables/simple-datatables.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script>
+      function copyAddress(elementId = "mobile-contract-address") {
+        const addressText = document.getElementById(elementId).textContent;
+        const textarea = document.createElement("textarea");
+        textarea.value = addressText;
+        document.body.appendChild(textarea);
+        textarea.select();
+        try {
+          document.execCommand("copy");
+          const copyIcon = document.getElementById(
+            elementId === "mobile-contract-address"
+              ? "copy-address-btn"
+              : "copy-address-btn-desktop"
+          );
+          copyIcon.classList.remove("bx-copy");
+          copyIcon.classList.add("bx-check");
+          setTimeout(() => {
+            copyIcon.classList.remove("bx-check");
+            copyIcon.classList.add("bx-copy");
+          }, 1500);
+        } catch (err) {
+          console.error("Copy failed:", err);
+        }
+        document.body.removeChild(textarea);
+      }
+
+      // Existing copyText function for referral link
+      function copyText(device = 'mobile') {
+        const textToCopyId = device === "mobile" ? "text-to-copy-mobile" : "text-to-copy-desktop";
+        const copyStatusId = device === "mobile" ? "copy-status-mobile" : "copy-status-desktop";
+        const copyIconId = device === "mobile" ? "copy-icon-mobile" : "copy-icon-desktop";
+
+        const textToCopyElement = document.getElementById(textToCopyId);
+        const copyStatus = document.getElementById(copyStatusId);
+        const copyIcon = document.getElementById(copyIconId);
+
+        if (!textToCopyElement || !copyStatus || !copyIcon) {
+          console.error(`Cannot find elements for copying referral link on ${device}.`);
+          alert("Error: Cannot copy link. Elements not found.");
+          return;
+        }
+
+        const textToCopy = textToCopyElement.textContent;
+        const textarea = document.createElement("textarea");
+        textarea.value = textToCopy;
+        document.body.appendChild(textarea);
+        textarea.select();
+        document.execCommand("copy");
+        document.body.removeChild(textarea);
+        copyStatus.textContent = "Link Copied!";
+        copyIcon.classList.remove("bx-copy-alt");
+        copyIcon.classList.add("bxs-copy-alt");
+        setTimeout(() => {
+          copyStatus.textContent = "Copy Link";
+          copyIcon.classList.remove("bxs-copy-alt");
+          copyIcon.classList.add("bx-copy-alt");
+        }, 1500);
+      }
+
+      // Show modal on page load
+      document.addEventListener("DOMContentLoaded", function () {
+        var myModal = new bootstrap.Modal(
+          document.getElementById("exampleModal")
+        );
+        myModal.show();
+        fetchUserData(); // Fetch user data on page load
+      });
+    </script>
+    <!-- after your footer -->
+    <script>
+      async function fetchUserData() {
+        const token = localStorage.getItem("token");
+        if (!token) {
+          alert("Please log in to view your dashboard");
+          window.location.href = "login.html";
+          return;
+        }
+
+        try {
+          const response = await fetch("https://new-moto.onrender.com/api/v1/me", {
+            method: "GET",
+            headers: {  
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${token}`,
+            },
+          });
+
+          const data = await response.json();
+
+          if (response.ok && data.success) {
+            console.log("User Data:", data.user);
+            // Update user data fields
+            updateLoadingState("header-user-id", data.user._id || "N/A");
+            updateLoadingState("mobile-user-id", data.user._id || "N/A");
+            updateLoadingState("desktop-user-id", data.user._id || "N/A");
+            updateLoadingState(
+              "mobile-active-package",
+              data.user.activepackage || "N/A"
+            );
+            updateLoadingState(
+              "desktop-active-package",
+              data.user.activepackage || "N/A"
+            );
+            updateLoadingState(
+              "mobile-registration-time",
+              data.user.registrationTime
+                ? new Date(data.user.registrationTime).toLocaleString()
+                : "N/A"
+            );
+            updateLoadingState(
+              "desktop-registration-time",
+              data.user.registrationTime
+                ? new Date(data.user.registrationTime).toLocaleString()
+                : "N/A"
+            );
+            updateLoadingState(
+              "mobile-contract-address",
+              data.user.contractAddress || "N/A"
+            );
+            updateLoadingState(
+              "desktop-contract-address",
+              data.user.contractAddress || "N/A"
+            );
+
+            // Update referral links for both mobile and desktop
+            const referralLink = `http://127.0.0.1:5500/moto-wealth/register.html?sponserid=${data.user.sponserid || "NotAvailable"}`;
+            updateLoadingState("text-to-copy-mobile", referralLink);
+            updateLoadingState("text-to-copy-desktop", referralLink);
+            console.log("Referral Link Updated:", referralLink);
+            console.log("User Data Received:", data.user);
+            // Check if sponserid is available and update UI accordingly
+            if (!data.user.sponserid || data.user.sponserid === "NotAvailable") {
+              console.warn("Sponsor ID not found in user data");
+              updateLoadingState("text-to-copy-mobile", "Referral link unavailable. Sponsor ID missing. Check console for details.");
+              updateLoadingState("text-to-copy-desktop", "Referral link unavailable. Sponsor ID missing. Check console for details.");
+            }
+
+            // Update other fields
+            updateLoadingState("toalincome", `$${data.user.toalincome || "0"}`);
+            updateLoadingState(
+              "todayincome",
+              `$${data.user.todayincome || "0"}`
+            );
+            updateLoadingState(
+              "activeteam",
+              `${data.user.activeteam || 0} Members`
+            );
+            updateLoadingState(
+              "totalteam",
+              `${data.user.totalteam || 0} Members`
+            );
+            updateLoadingState(
+              "directteam",
+              `${data.user.directteam || 0} Members`
+            );
+            updateLoadingState(
+              "totalwithdraw",
+              `$${data.user.totalwithdraw || "0"}`
+            );
+            updateLoadingState(
+              "rechargetotal",
+              `$${data.user.rechargetotal || "0"}`
+            );
+            updateLoadingState(
+              "activeteam-2",
+              data.user.activeteam
+                ? `${data.user.activeteam} Members`
+                : "0 Members"
+            );
+            updateLoadingState(
+              "totalteam-2",
+              data.user.totalteam
+                ? `${data.user.totalteam} Members`
+                : "0 Members"
+            );
+          } else {
+            console.error("Error:", data.message);
+            alert(`Failed to fetch user: ${data.message}`);
+            if (
+              data.message === "Invalid token" ||
+              data.message === "User not found"
+            ) {
+              localStorage.removeItem("token");
+              window.location.href = "login.html";
+            }
+            updateAllFields("Error");
+          }
+        } catch (error) {
+          console.error("Fetch Error:", error);
+          alert("Failed to connect to the server");
+          updateAllFields("Server Error");
+          window.location.href = "login.html";
+        }
+      }
+
+      function updateAllFields(value) {
+        const fields = [
+          "header-user-id",
+          "mobile-user-id",
+          "desktop-user-id",
+          "mobile-active-package",
+          "desktop-active-package",
+          "mobile-registration-time",
+          "desktop-registration-time",
+          "mobile-contract-address",
+          "desktop-contract-address",
+          "text-to-copy-mobile",
+          "text-to-copy-desktop",
+          "toalincome",
+          "todayincome",
+          "activeteam",
+          "totalteam",
+          "directteam",
+          "totalwithdraw",
+          "rechargetotal",
+          "activeteam-2",
+          "totalteam-2",
+        ];
+        fields.forEach((id) => updateLoadingState(id, value));
+      }
+
+      function updateLoadingState(elementId, value) {
+        const element = document.getElementById(elementId);
+        if (element) {
+          element.textContent = value;
+        }
+      }
+
+      function copyAddress(elementId = "mobile-contract-address") {
+        const addressText = document.getElementById(elementId).textContent;
+        navigator.clipboard
+          .writeText(addressText)
+          .then(() => {
+            const copyIcon = document.getElementById(
+              elementId === "mobile-contract-address"
+                ? "copy-address-btn"
+                : "copy-address-btn-desktop"
+            );
+            copyIcon.classList.remove("bx-copy");
+            copyIcon.classList.add("bx-check");
+            setTimeout(() => {
+              copyIcon.classList.remove("bx-check");
+              copyIcon.classList.add("bx-copy");
+            }, 1500);
+            alert("Address copied!");
+          })
+          .catch((err) => {
+            console.error("Copy failed:", err);
+            alert("Failed to copy address.");
+          });
+      }
+
+      function copyText(device) {
+        const textToCopyId =
+          device === "mobile" ? "text-to-copy-mobile" : "text-to-copy-desktop";
+        const copyStatusId =
+          device === "mobile" ? "copy-status-mobile" : "copy-status-desktop";
+        const copyIconId =
+          device === "mobile" ? "copy-icon-mobile" : "copy-icon-desktop";
+
+        const textToCopy = document.getElementById(textToCopyId).textContent;
+        const copyStatus = document.getElementById(copyStatusId);
+        const copyIcon = document.getElementById(copyIconId);
+
+        navigator.clipboard
+          .writeText(textToCopy)
+          .then(() => {
+            copyStatus.textContent = "Link Copied!";
+            copyIcon.classList.remove("bx-copy-alt");
+            copyIcon.classList.add("bxs-copy-alt");
+            setTimeout(() => {
+              copyStatus.textContent = "Copy Link";
+              copyIcon.classList.remove("bxs-copy-alt");
+              copyIcon.classList.add("bx-copy-alt");
+            }, 1500);
+          })
+          .catch((err) => {
+            console.error("Copy failed:", err);
+            alert("Failed to copy link.");
+          });
+      }
+
+      document.addEventListener("DOMContentLoaded", () => {
+        var myModal = new bootstrap.Modal(
+          document.getElementById("exampleModal")
+        );
+        myModal.show();
+        fetchUserData();
+      });
+    </script>
+  </body>
+</html>

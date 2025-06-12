@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Support - Submit Ticket</title>
+
+  <link href="assets/img/favicon.png" rel="icon">
+
+  <link href="https://fonts.gstatic.com" rel="preconnect">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="assets/vendor/simple-datatables/style.css" rel="stylesheet">
+
+  <link href="assets/css/style.css" rel="stylesheet">
+  <style>
+    .error-msg {
+      background-color: #dc3545;
+      color: white;
+      font-size: 16px;
+      font-weight: 600;
+      text-align: center;
+      border-radius: 6px;
+      padding: 12px;
+      margin-bottom: 20px;
+      display: none;
+    }
+    
+    .success-msg {
+      background-color: #28a745;
+      color: white;
+      font-size: 16px;
+      font-weight: 600;
+      text-align: center;
+      border-radius: 6px;
+      padding: 12px;
+      margin-bottom: 20px;
+      display: none;
+    }
+
+    .support-form {
+      background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+      border-radius: 15px;
+      padding: 30px;
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+    }
+
+    .support-form .form-control,
+    .support-form .form-select {
+      background-color: rgba(255, 255, 255, 0.1);
+      border: 2px solid rgba(255, 255, 255, 0.2);
+      color: white;
+      border-radius: 8px;
+      padding: 12px 15px;
+    }
+
+    .support-form .form-control:focus,
+    .support-form .form-select:focus {
+      background-color: rgba(255, 255, 255, 0.15);
+      border-color: #00adee;
+      box-shadow: 0 0 10px rgba(0, 173, 238, 0.3);
+      color: white;
+    }
+
+    .support-form .form-control::placeholder {
+      color: rgba(255, 255, 255, 0.7);
+    }
+
+    .support-form .form-label {
+      color: white;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    .support-form .form-select option {
+      background-color: #2a5298;
+      color: white;
+    }
+
+    .btn-support {
+      background: linear-gradient(45deg, #00adee, #0099cc);
+      border: none;
+      color: white;
+      padding: 15px 30px;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 16px;
+      width: 100%;
+      transition: all 0.3s ease;
+    }
+
+    .btn-support:hover {
+      background: linear-gradient(45deg, #0099cc, #007bb5);
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(0, 173, 238, 0.4);
+    }
+
+    .ticket-list {
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 15px;
+      padding: 20px;
+      margin-top: 30px;
+    }
+
+    .ticket-item {
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 10px;
+      padding: 15px;
+      margin-bottom: 15px;
+      border-left: 4px solid #00adee;
+    }
+
+    .ticket-status {
+      display: inline-block;
+      padding: 4px 12px;
+      border-radius: 15px;
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+    }
+
+    .status-pending { background-color: #ffc107; color: #000; }
+    .status-in_progress { background-color: #17a2b8; color: #fff; }
+    .status-resolved { background-color: #28a745; color: #fff; }
+    .status-closed { background-color: #6c757d; color: #fff; }
+
+    .priority-low { border-left-color: #28a745; }
+    .priority-medium { border-left-color: #ffc107; }
+    .priority-high { border-left-color: #fd7e14; }
+    .priority-urgent { border-left-color: #dc3545; }
+  </style>
+</head>
+
+<body>
+  <header id="header" class="header fixed-top d-flex align-items-center">
+    <div class="d-flex align-items-center justify-content-between">
+      <a href="index.html" class="logo-full d-flex align-items-center">
+        <img src="assets/img/logo.png" alt="logo">
+      </a>
+      <i class="bi bi-list toggle-sidebar-btn"></i>
+    </div>
+    <nav class="header-nav ms-auto">
+      <ul class="d-flex align-items-center">
+        <li class="nav-item dropdown pe-3">
+          <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
+            <img src="assets/img/profile-img.jpg" alt="Profile" class="rounded-circle">
+          </a>
+          <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
+            <li class="dropdown-header">
+              <h6 id="header-user-phone">Loading...</h6>
+            </li>
+            <li><hr class="dropdown-divider"></li>
+            <li>
+              <a class="dropdown-item d-flex align-items-center" href="#">
+                <i class="bi bi-person"></i>
+                <span>My Profile</span>
+              </a>
+            </li>
+            <li><hr class="dropdown-divider"></li>
+            <li>
+              <a class="dropdown-item d-flex align-items-center" href="#" onclick="signOut()">
+                <i class="bi bi-box-arrow-right"></i>
+                <span>Sign Out</span>
+              </a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <aside id="sidebar" class="sidebar">
+    <ul class="sidebar-nav" id="sidebar-nav">
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="index.html">
+          <i class="bi bi-grid"></i>
+          <span>Dashboard</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="support.html">
+          <i class="bi bi-headset"></i>
+          <span>Support</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="team.html">
+          <i class="bi bi-people"></i>
+          <span>Team</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link collapsed auto-id" data-bs-toggle="collapse" href="#">
+          <i class="bx bx-dollar"></i><span>Incomes</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+        <ul class="nav-content collapse" data-bs-parent="#sidebar-nav">
+          <li>
+            <a href="transactions.html">
+              <i class="bi bi-circle"></i><span>Transactions</span>
+            </a>
+          </li>
+          <li>
+            <a href="withdrawal.html">
+              <i class="bi bi-circle"></i><span>Withdrawal</span>
+            </a>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </aside>
+
+  <main id="main" class="main">
+    <section class="section dashboard">
+      <div class="page-heading">
+        <h3><i class="bi bi-headset me-2"></i>Support Center</h3>
+        <p class="text-white-50">Submit your queries, complaints, or technical issues. Our support team will assist you.</p>
+      </div>
+
+      <div class="row">
+        <div class="col-lg-8">
+          <div class="support-form">
+            <h5 class="text-white mb-4"><i class="bi bi-plus-circle me-2"></i>Create New Support Ticket</h5>
+            
+            <div id="message-container">
+              <div id="error-message" class="error-msg"></div>
+              <div id="success-message" class="success-msg"></div>
+            </div>
+
+            <form id="supportForm">
+              <div class="row g-3">
+                <div class="col-md-6">
+                  <label for="userType" class="form-label">User Type</label>
+                  <select class="form-select" id="userType" required>
+                    <option value="">Select User Type</option>
+                    <option value="member">Member</option>
+                    <option value="sponsor">Sponsor</option>
+                  </select>
+                </div>
+                <div class="col-md-6">
+                  <label for="category" class="form-label">Category</label>
+                  <select class="form-select" id="category" required>
+                    <option value="">Select Category</option>
+                    <option value="technical">Technical Issue</option>
+                    <option value="payment">Payment Related</option>
+                    <option value="account">Account Issues</option>
+                    <option value="general">General Query</option>
+                    <option value="complaint">Complaint</option>
+                  </select>
+                </div>
+                <div class="col-md-6">
+                  <label for="priority" class="form-label">Priority</label>
+                  <select class="form-select" id="priority" required>
+                    <option value="">Select Priority</option>
+                    <option value="low">Low</option>
+                    <option value="medium" selected>Medium</option>
+                    <option value="high">High</option>
+                    <option value="urgent">Urgent</option>
+                  </select>
+                </div>
+                <div class="col-12">
+                  <label for="message" class="form-label">Message / Issue Description</label>
+                  <textarea class="form-control" id="message" rows="6" placeholder="Describe your issue or query in detail..." required></textarea>
+                  <div class="form-text text-white-50">Please provide as much detail as possible to help us assist you better.</div>
+                </div>
+              </div>
+              <button type="submit" class="btn btn-support mt-4">
+                <i class="bi bi-send me-2"></i>Submit Support Ticket
+              </button>
+            </form>
+          </div>
+        </div>
+
+        <div class="col-lg-4">
+          <div class="ticket-list">
+            <h5 class="text-white mb-3"><i class="bi bi-ticket-detailed me-2"></i>My Recent Tickets</h5>
+            <div id="ticket-list-container">
+              <div class="text-center text-white-50 py-4">
+                <i class="bi bi-hourglass-split" style="font-size: 2rem;"></i>
+                <p class="mt-2">Loading tickets...</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer id="footer" class="footer">
+    <div class="copyright">
+      &copy; Copyright <strong><span class="text-white">ProjectName.</span></strong> All Rights Reserved
+    </div>
+  </footer>
+
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/simple-datatables/simple-datatables.js"></script>
+  <script src="assets/js/main.js"></script>
+
+  <script>
+    // Support ticket submission
+    document.getElementById('supportForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      
+      const submitBtn = document.querySelector('button[type="submit"]');
+      const originalText = submitBtn.innerHTML;
+      
+      // Disable button and show loading
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = '<i class="bi bi-hourglass-split me-2"></i>Submitting...';
+      
+      // Hide previous messages
+      hideMessages();
+      
+      // Get form data
+      const formData = {
+        userType: document.getElementById('userType').value,
+        category: document.getElementById('category').value,
+        priority: document.getElementById('priority').value,
+        message: document.getElementById('message').value.trim()
+      };
+      
+      // Validate required fields
+      if (!formData.userType || !formData.category || !formData.priority || !formData.message) {
+        showError('Please fill in all required fields.');
+        resetSubmitButton(submitBtn, originalText);
+        return;
+      }
+      
+      try {
+        const response = await fetch('https://new-moto.onrender.com/api/v1/support', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${localStorage.getItem('token')}`
+          },
+          body: JSON.stringify(formData)
+        });
+        
+        const result = await response.json();
+        
+        if (response.ok && result.success) {
+          showSuccess('Support ticket created successfully! Our team will review and respond soon.');
+          document.getElementById('supportForm').reset();
+          loadUserTickets(); // Refresh ticket list
+        } else {
+          showError(result.message || 'Failed to create support ticket. Please try again.');
+        }
+        
+      } catch (error) {
+        console.error('Support ticket submission error:', error);
+        showError('Network error. Please check your connection and try again.');
+      }
+      
+      resetSubmitButton(submitBtn, originalText);
+    });
+    
+    // Load user's support tickets
+    async function loadUserTickets() {
+      try {
+        const response = await fetch('https://new-moto.onrender.com/api/v1/support', {
+          method: 'GET',
+          headers: {
+            'Authorization': `Bearer ${localStorage.getItem('token')}`
+          }
+        });
+        
+        const result = await response.json();
+        const container = document.getElementById('ticket-list-container');
+        
+        if (response.ok && result.success) {
+          if (result.tickets.length === 0) {
+            container.innerHTML = `
+              <div class="text-center text-white-50 py-4">
+                <i class="bi bi-inbox" style="font-size: 2rem;"></i>
+                <p class="mt-2">No support tickets found.</p>
+              </div>
+            `;
+          } else {
+            container.innerHTML = result.tickets.slice(0, 5).map(ticket => `
+              <div class="ticket-item priority-${ticket.priority}">
+                <div class="d-flex justify-content-between align-items-start mb-2">
+                  <h6 class="text-white mb-0">${ticket.category}</h6>
+                  <span class="ticket-status status-${ticket.status}">${ticket.status}</span>
+                </div>
+                <p class="text-white-75 small mb-2">${ticket.message.substring(0, 100)}${ticket.message.length > 100 ? '...' : ''}</p>
+                <small class="text-white-50">
+                  <i class="bi bi-calendar3 me-1"></i>${new Date(ticket.createdAt).toLocaleDateString()}
+                  <span class="ms-3"><i class="bi bi-flag me-1"></i>${ticket.priority}</span>
+                </small>
+              </div>
+            `).join('');
+          }
+        } else {
+          container.innerHTML = `
+            <div class="text-center text-white-50 py-4">
+              <i class="bi bi-exclamation-circle" style="font-size: 2rem;"></i>
+              <p class="mt-2">Error loading tickets.</p>
+            </div>
+          `;
+        }
+        
+      } catch (error) {
+        console.error('Error loading tickets:', error);
+        document.getElementById('ticket-list-container').innerHTML = `
+          <div class="text-center text-white-50 py-4">
+            <i class="bi bi-wifi-off" style="font-size: 2rem;"></i>
+            <p class="mt-2">Network error loading tickets.</p>
+          </div>
+        `;
+      }
+    }
+    
+    function showError(message) {
+      const errorEl = document.getElementById('error-message');
+      errorEl.textContent = message;
+      errorEl.style.display = 'block';
+      setTimeout(() => errorEl.style.display = 'none', 5000);
+    }
+    
+    function showSuccess(message) {
+      const successEl = document.getElementById('success-message');
+      successEl.textContent = message;
+      successEl.style.display = 'block';
+      setTimeout(() => successEl.style.display = 'none', 5000);
+    }
+    
+    function hideMessages() {
+      document.getElementById('error-message').style.display = 'none';
+      document.getElementById('success-message').style.display = 'none';
+    }
+    
+    function resetSubmitButton(button, originalText) {
+      button.disabled = false;
+      button.innerHTML = originalText;
+    }
+    
+    function signOut() {
+      localStorage.removeItem('token');
+      window.location.href = 'login.html';
+    }
+    
+    // Load tickets when page loads
+    document.addEventListener('DOMContentLoaded', () => {
+      loadUserTickets();
+    });
+  </script>
+</body>
+
+</html> 

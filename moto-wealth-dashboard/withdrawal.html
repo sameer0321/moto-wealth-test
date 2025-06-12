@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+
+    <title>Dashboard - Withdrawal</title>
+    <meta content="" name="description" />
+    <meta content="" name="keywords" />
+
+    <link href="assets/img/favicon.png" rel="icon" />
+
+    <link href="https://fonts.gstatic.com" rel="preconnect" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+      rel="stylesheet"
+    />
+
+    <link
+      href="assets/vendor/bootstrap/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="assets/vendor/bootstrap-icons/bootstrap-icons.css"
+      rel="stylesheet"
+    />
+    <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet" />
+    <link href="assets/css/style.css" rel="stylesheet" />
+  </head>
+
+  <body>
+    <header id="header" class="header fixed-top d-flex align-items-center">
+      <div class="d-flex align-items-center justify-content-between">
+        <a href="index.html" class="logo-full d-flex align-items-center">
+          <img src="assets/img/logo.png" alt="logo" />
+        </a>
+        <i class="bi bi-list toggle-sidebar-btn"></i>
+      </div>
+      <nav class="header-nav ms-auto">
+        <ul class="d-flex align-items-center">
+          <li class="nav-item dropdown pe-3">
+            <a
+              class="nav-link nav-profile d-flex align-items-center pe-0"
+              href="#"
+              data-bs-toggle="dropdown"
+            >
+              <img
+                src="assets/img/profile-img.jpg"
+                alt="Profile"
+                class="rounded-circle"
+              />
+            </a>
+            <ul
+              class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile"
+            >
+              <li class="dropdown-header">
+                <h6 id="user-phone">Loading...</h6>
+              </li>
+              <li><hr class="dropdown-divider" /></li>
+              <li>
+                <a
+                  class="dropdown-item d-flex align-items-center"
+                  href="profile.html"
+                >
+                  <i class="bi bi-person"></i>
+                  <span>My Profile</span>
+                </a>
+              </li>
+              <li><hr class="dropdown-divider" /></li>
+              <li>
+                <a
+                  class="dropdown-item d-flex align-items-center"
+                  href="#"
+                  onclick="signOut()"
+                >
+                  <i class="bi bi-box-arrow-right"></i>
+                  <span>Sign Out</span>
+                </a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+    </header>
+
+    <aside id="sidebar" class="sidebar">
+      <ul class="sidebar-nav" id="sidebar-nav">
+        <li class="nav-item">
+          <a class="nav-link collapsed" href="index.html">
+            <i class="bi bi-grid"></i>
+            <span>Dashboard</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link collapsed" href="support.html">
+            <i class="bi bi-headset"></i>
+            <span>Support</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link collapsed" href="team.html">
+            <i class="bi bi-people"></i>
+            <span>Team</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            data-bs-toggle="collapse"
+            href="#income-collapse"
+          >
+            <i class="bx bx-dollar"></i><span>Incomes</span><i class="bi bi-chevron-down ms-auto"></i>
+          </a>
+          <ul id="income-collapse" class="nav-content collapse show" data-bs-parent="#sidebar-nav">
+            <li>
+              <a href="transactions.html">
+                <i class="bi bi-circle"></i><span>Transactions</span>
+              </a>
+            </li>
+            <li>
+              <a href="withdrawal.html" class="active">
+                <i class="bi bi-circle"></i><span>Withdrawal</span>
+              </a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </aside>
+
+    <main id="main" class="main">
+      <section class="section dashboard">
+        <div class="page-heading">
+          <h3>Withdrawal</h3>
+        </div>
+
+        <!-- Withdrawal Info Card -->
+        <div class="row mb-4">
+          <div class="col-lg-12">
+            <div class="card" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border: none;">
+              <div class="card-body text-white">
+                <h5 class="card-title text-white">Withdrawal Information</h5>
+                <div class="row">
+                  <div class="col-md-6">
+                    <p><i class="bi bi-cash-stack"></i> <strong>Invested Amount:</strong> $<span id="invested-amount">0</span></p>
+                    <p><i class="bi bi-trophy"></i> <strong>Status:</strong> <span id="user-status">Investor</span></p>
+                    <p><i class="bi bi-people"></i> <strong>Direct Referrals:</strong> <span id="direct-referrals">0</span></p>
+                    <p><i class="bi bi-calendar"></i> <strong>Withdrawal Day:</strong> Monday</p>
+                  </div>
+                  <div class="col-md-6">
+                    <p><i class="bi bi-piggy-bank"></i> <strong>Available Earnings:</strong> $<span id="available-earnings">0</span></p>
+                    <p><i class="bi bi-graph-up"></i> <strong>Max Withdrawal Limit:</strong> $<span id="max-withdrawal">0</span></p>
+                    <p><i class="bi bi-arrow-down-circle"></i> <strong>Total Withdrawn:</strong> $<span id="total-withdrawn">0</span></p>
+                    <p><i class="bi bi-currency-dollar"></i> <strong>Remaining Limit:</strong> $<span id="remaining-limit">0</span></p>
+                  </div>
+                </div>
+                <div class="alert alert-info" style="background: rgba(255,255,255,0.2); border: none;">
+                  <i class="bi bi-info-circle"></i>
+                  <strong>Withdrawal Rules:</strong>
+                  <ul class="mb-0 mt-2">
+                    <li>Withdrawals allowed only on Mondays</li>
+                    <li>Minimum withdrawal: $10</li>
+                    <li>5% deduction charges apply</li>
+                    <li>Investor capping: 2X of invested amount</li>
+                    <li>Leader capping: 3X of invested amount (requires 3+ direct referrals)</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Withdrawal Status Alert -->
+        <div class="row mb-4">
+          <div class="col-lg-12">
+            <div id="withdrawal-status-alert" class="alert" style="display: none;">
+              <i id="status-icon"></i>
+              <span id="status-message"></span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Withdrawal Form -->
+        <div class="row">
+          <div class="col-lg-8">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">Make Withdrawal</h5>
+                
+                <form id="withdrawal-form">
+                  <div class="row mb-3">
+                    <label for="withdrawal-amount" class="col-sm-3 col-form-label">Amount ($)</label>
+                    <div class="col-sm-9">
+                      <input 
+                        type="number" 
+                        class="form-control" 
+                        id="withdrawal-amount" 
+                        placeholder="Enter amount to withdraw"
+                        min="10"
+                        step="0.01"
+                        required
+                      />
+                      <div class="form-text">Minimum withdrawal amount is $10</div>
+                    </div>
+                  </div>
+
+                  <div class="row mb-3">
+                    <div class="col-sm-9 offset-sm-3">
+                      <div class="card border-warning">
+                        <div class="card-body">
+                          <h6 class="card-title text-warning">
+                            <i class="bi bi-calculator"></i> Withdrawal Calculation
+                          </h6>
+                          <div id="calculation-details">
+                            <p class="mb-1">Requested Amount: $<span id="calc-requested">0.00</span></p>
+                            <p class="mb-1">Deduction Charges (5%): $<span id="calc-charges">0.00</span></p>
+                            <p class="mb-0 fw-bold text-success">Net Amount You'll Receive: $<span id="calc-net">0.00</span></p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="row mb-3">
+                    <div class="col-sm-9 offset-sm-3">
+                      <button 
+                        type="submit" 
+                        class="btn btn-primary"
+                        id="withdraw-btn"
+                        disabled
+                      >
+                        <i class="bi bi-cash-coin"></i> Withdraw Money
+                      </button>
+                      <button type="button" class="btn btn-secondary ms-2" onclick="clearForm()">
+                        <i class="bi bi-arrow-clockwise"></i> Reset
+                      </button>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+
+          <!-- Quick Info Panel -->
+          <div class="col-lg-4">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">Quick Info</h5>
+                
+                <div class="alert alert-light">
+                  <h6><i class="bi bi-clock"></i> Next Withdrawal</h6>
+                  <p id="next-withdrawal-date" class="mb-0">Loading...</p>
+                </div>
+
+                <div class="alert alert-success">
+                  <h6><i class="bi bi-cash"></i> Max You Can Withdraw Today</h6>
+                  <p class="mb-0 fs-5 fw-bold">$<span id="max-today-withdrawal">0</span></p>
+                </div>
+
+                <div class="alert alert-warning">
+                  <h6><i class="bi bi-exclamation-triangle"></i> Remember</h6>
+                  <ul class="mb-0 small">
+                    <li>5% charges will be deducted</li>
+                    <li>Process may take 24-48 hours</li>
+                    <li>Only one withdrawal per week</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="copyright">
+        &copy; Copyright
+        <strong><span class="text-white">ProjectName.</span></strong> All Rights
+        Reserved
+      </div>
+    </footer>
+
+    <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/main.js"></script>
+
+    <script>
+      let withdrawalInfo = {};
+
+      // Load withdrawal information on page load
+      async function loadWithdrawalInfo() {
+        try {
+          const response = await fetch("https://new-moto.onrender.com/api/v1/withdrawal-info", {
+            method: "GET",
+            headers: {
+              Authorization: `Bearer ${localStorage.getItem("token")}`,
+              "Content-Type": "application/json",
+            },
+          });
+
+          const data = await response.json();
+          
+          if (response.ok) {
+            withdrawalInfo = data.withdrawalInfo;
+            updateWithdrawalInfoDisplay();
+            updateWithdrawalStatus();
+          } else {
+            showAlert('danger', 'Failed to load withdrawal information: ' + data.message);
+          }
+        } catch (error) {
+          console.error("Error loading withdrawal info:", error);
+          showAlert('danger', 'Error loading withdrawal information. Please refresh the page.');
+        }
+      }
+
+      // Update the withdrawal info display
+      function updateWithdrawalInfoDisplay() {
+        document.getElementById('invested-amount').textContent = withdrawalInfo.investedAmount || 0;
+        document.getElementById('user-status').textContent = withdrawalInfo.cappingType || 'Investor (2X)';
+        document.getElementById('direct-referrals').textContent = withdrawalInfo.directReferrals || 0;
+        document.getElementById('available-earnings').textContent = withdrawalInfo.availableEarnings || 0;
+        document.getElementById('max-withdrawal').textContent = withdrawalInfo.maxWithdrawalLimit || 0;
+        document.getElementById('total-withdrawn').textContent = withdrawalInfo.totalWithdrawnSoFar || 0;
+        document.getElementById('remaining-limit').textContent = withdrawalInfo.remainingWithdrawalLimit || 0;
+        document.getElementById('max-today-withdrawal').textContent = withdrawalInfo.canWithdrawAmount || 0;
+        document.getElementById('next-withdrawal-date').textContent = withdrawalInfo.nextWithdrawalDate || 'N/A';
+        
+        // Set max attribute for input
+        const withdrawalInput = document.getElementById('withdrawal-amount');
+        withdrawalInput.max = withdrawalInfo.canWithdrawAmount || 0;
+      }
+
+      // Update withdrawal status alert
+      function updateWithdrawalStatus() {
+        const alertDiv = document.getElementById('withdrawal-status-alert');
+        const iconSpan = document.getElementById('status-icon');
+        const messageSpan = document.getElementById('status-message');
+        const withdrawBtn = document.getElementById('withdraw-btn');
+
+        let alertClass = '';
+        let iconClass = '';
+        let message = '';
+        let canWithdraw = false;
+
+        if (!withdrawalInfo.canWithdrawToday) {
+          alertClass = 'alert-warning';
+          iconClass = 'bi bi-calendar-x';
+          message = 'Withdrawals are only allowed on Mondays. Please come back on Monday.';
+        } else if (!withdrawalInfo.canWithdrawThisWeek) {
+          alertClass = 'alert-info';
+          iconClass = 'bi bi-check-circle';
+          message = 'You have already withdrawn this week. Next withdrawal available next Monday.';
+        } else if (withdrawalInfo.canWithdrawAmount <= 0) {
+          alertClass = 'alert-danger';
+          iconClass = 'bi bi-exclamation-triangle';
+          message = 'No funds available for withdrawal. You may have reached your withdrawal limit or have insufficient earnings.';
+        } else {
+          alertClass = 'alert-success';
+          iconClass = 'bi bi-check-circle';
+          message = `You can withdraw up to $${withdrawalInfo.canWithdrawAmount} today!`;
+          canWithdraw = true;
+        }
+
+        alertDiv.className = `alert ${alertClass}`;
+        iconSpan.className = iconClass;
+        messageSpan.textContent = message;
+        alertDiv.style.display = 'block';
+
+        // Enable/disable withdraw button
+        withdrawBtn.disabled = !canWithdraw;
+      }
+
+      // Calculate withdrawal charges and net amount
+      function calculateWithdrawal() {
+        const amount = parseFloat(document.getElementById('withdrawal-amount').value) || 0;
+        const charges = amount * 0.05;
+        const netAmount = amount - charges;
+
+        document.getElementById('calc-requested').textContent = amount.toFixed(2);
+        document.getElementById('calc-charges').textContent = charges.toFixed(2);
+        document.getElementById('calc-net').textContent = netAmount.toFixed(2);
+      }
+
+      // Handle withdrawal form submission
+      async function handleWithdrawal(event) {
+        event.preventDefault();
+        
+        const amount = parseFloat(document.getElementById('withdrawal-amount').value);
+        
+        if (!amount || amount < 10) {
+          showAlert('danger', 'Please enter a valid amount (minimum $10)');
+          return;
+        }
+
+        if (amount > withdrawalInfo.canWithdrawAmount) {
+          showAlert('danger', `Amount exceeds your withdrawal limit of $${withdrawalInfo.canWithdrawAmount}`);
+          return;
+        }
+
+        const withdrawBtn = document.getElementById('withdraw-btn');
+        const originalText = withdrawBtn.innerHTML;
+        withdrawBtn.innerHTML = '<i class="spinner-border spinner-border-sm me-2"></i>Processing...';
+        withdrawBtn.disabled = true;
+
+        try {
+          const response = await fetch("https://new-moto.onrender.com/api/v1/withdraw", {
+            method: "POST",
+            headers: {
+              Authorization: `Bearer ${localStorage.getItem("token")}`,
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ amount }),
+          });
+
+          const data = await response.json();
+          
+          if (response.ok) {
+            showAlert('success', 
+              `Withdrawal successful! You will receive $${data.withdrawalDetails.netAmountReceived} ` +
+              `(after $${data.withdrawalDetails.deductionCharges} charges). ` +
+              `Processing may take 24-48 hours.`
+            );
+            clearForm();
+            loadWithdrawalInfo(); // Refresh withdrawal info
+          } else {
+            showAlert('danger', data.message || 'Withdrawal failed');
+          }
+        } catch (error) {
+          console.error("Error during withdrawal:", error);
+          showAlert('danger', 'Network error. Please try again.');
+        } finally {
+          withdrawBtn.innerHTML = originalText;
+          withdrawBtn.disabled = false;
+        }
+      }
+
+      // Show alert message
+      function showAlert(type, message) {
+        const alertDiv = document.createElement('div');
+        alertDiv.className = `alert alert-${type} alert-dismissible fade show`;
+        alertDiv.innerHTML = `
+          ${message}
+          <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        `;
+        
+        const container = document.querySelector('.main');
+        container.insertBefore(alertDiv, container.firstChild);
+        
+        // Auto dismiss after 5 seconds
+        setTimeout(() => {
+          if (alertDiv.parentNode) {
+            alertDiv.remove();
+          }
+        }, 5000);
+      }
+
+      // Clear form
+      function clearForm() {
+        document.getElementById('withdrawal-form').reset();
+        calculateWithdrawal();
+      }
+
+      // Sign out function
+      function signOut() {
+        localStorage.removeItem("token");
+        window.location.href = "../login.html";
+      }
+
+      // Event listeners
+      document.addEventListener("DOMContentLoaded", function() {
+        loadWithdrawalInfo();
+        
+        // Add event listener for amount input
+        const amountInput = document.getElementById('withdrawal-amount');
+        amountInput.addEventListener('input', calculateWithdrawal);
+        
+        // Add event listener for form submission
+        document.getElementById('withdrawal-form').addEventListener('submit', handleWithdrawal);
+      });
+    </script>
+  </body>
+</html> 

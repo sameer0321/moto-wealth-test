@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html class="no-js" lang="">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <title>Register</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" href="images/favicon.png" />
+    <link rel="stylesheet" href="css/bootstrap-lg.min.css" />
+    <link rel="stylesheet" href="css/style-lg.css" />
+    <link rel="stylesheet" href="css/fontawesome-all-lg.min.css" />
+
+    <style>
+      .video-background {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        z-index: -1;
+      }
+      .error-message {
+        color: #ff6b6b;
+        font-size: 0.9em;
+        margin-top: 5px;
+        padding: 10px;
+        background-color: rgba(255, 107, 107, 0.1);
+        border-radius: 5px;
+        border-left: 4px solid #ff6b6b;
+      }
+      .success-message {
+        color: #51cf66;
+        font-size: 0.9em;
+        margin-top: 5px;
+        padding: 10px;
+        background-color: rgba(81, 207, 102, 0.1);
+        border-radius: 5px;
+        border-left: 4px solid #51cf66;
+      }
+      .form-info {
+        background-color: rgba(116, 192, 252, 0.1);
+        border: 1px solid rgba(116, 192, 252, 0.3);
+        border-radius: 8px;
+        padding: 12px;
+        margin-bottom: 15px;
+        color: #74c0fc;
+        font-size: 13px;
+        text-align: center;
+      }
+    </style>
+  </head>
+
+  <body>
+    <section class="fxt-template-animation fxt-template-layout6">
+      <video autoplay muted loop playsinline class="video-background">
+        <source src="images/video/artistic-video.mp4" type="video/mp4" />
+      </video>
+
+      <div class="fxt-content">
+        <div class="fxt-header">
+          <a href="index.html" class="fxt-logo"
+            ><img src="images/logo.png" style="width: 250px" alt="Logo"
+          /></a>
+        </div>
+        <div class="fxt-form">
+          <h2 class="text-light">Welcome to Registration</h2>
+          <div class="form-info">
+            <i class="fas fa-info-circle me-2"></i>
+            Please provide your phone number and email address for account security and recovery.
+          </div>
+          <form id="registerForm" method="POST">
+            <div class="form-group">
+              <div class="fxt-transformY-50 fxt-transition-delay-3">
+                <input
+                  type="text"
+                  class="form-control"
+                  name="phoneno"
+                  id="phoneno"
+                  placeholder="Phone No"
+                  required="required"
+                />
+              </div>
+              <br />
+              <div class="fxt-transformY-50 fxt-transition-delay-3">
+                <input
+                  type="email"
+                  class="form-control"
+                  name="email"
+                  id="email"
+                  placeholder="Email Address"
+                  required="required"
+                />
+              </div>
+              <br />
+              <div class="fxt-transformY-50 fxt-transition-delay-3">
+                <input
+                  type="password"
+                  class="form-control"
+                  name="password"
+                  id="password"
+                  placeholder="Password"
+                  required="required"
+                />
+              </div>
+              <br />
+              <div class="fxt-transformY-50 fxt-transition-delay-3">
+                <input
+                  type="text"
+                  class="form-control"
+                  name="sponserid"
+                  id="sponserid"
+                  placeholder="Sponsor Id"
+                />
+              </div>
+              <div id="formMessage" class="error-message"></div>
+            </div>
+            <div class="form-group">
+              <div class="fxt-transformY-50 fxt-transition-delay-5">
+                <button type="submit" class="fxt-btn-fill">
+                  Register in Dapp
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="fxt-footer">
+          <div class="fxt-transformY-50 fxt-transition-delay-10">
+            <p>
+              Already have an account?<a
+                href="login.html"
+                class="switcher-text2 inline-text"
+                >Log in</a
+              >
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <script src="js/jquery-lg.min.js"></script>
+    <script src="js/bootstrap-lg.min.js"></script>
+    <script src="js/imagesloaded.pkgd.min.js"></script>
+    <script src="js/main-lg.js"></script>
+    <script>
+      document
+        .getElementById("registerForm")
+        .addEventListener("submit", async (e) => {
+          e.preventDefault();
+
+          // Collect form input values
+          const phoneno = document.getElementById("phoneno").value.trim();
+          const email = document.getElementById("email").value.trim();
+          const password = document.getElementById("password").value.trim();
+          const sponserid = document.getElementById("sponserid").value.trim();
+
+          // Client-side validation
+          if (!phoneno || !email || !password) {
+            document.getElementById("formMessage").textContent =
+              "Phone number, email, and password are required.";
+            document.getElementById("formMessage").className = "error-message";
+            return;
+          }
+
+          // Email validation
+          const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+          if (!emailRegex.test(email)) {
+            document.getElementById("formMessage").textContent =
+              "Please enter a valid email address.";
+            document.getElementById("formMessage").className = "error-message";
+            return;
+          }
+
+          // Build payload
+          const payload = {
+            phoneno,
+            email,
+            password,
+            sponserid: sponserid || "", // Send empty string if sponserid is not provided
+          };
+
+          try {
+            const res = await fetch("https://new-moto.onrender.com/api/v1/register", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify(payload),
+            });
+
+            // Display response message
+            const data = await res.json();
+            if (res.ok) {
+              document.getElementById("formMessage").textContent =
+                data.message || "Registration successful!";
+              document.getElementById("formMessage").className =
+                "success-message";
+              // Optionally reset form
+              document.getElementById("registerForm").reset();
+            } else {
+              document.getElementById("formMessage").textContent =
+                data.message || "Registration failed.";
+              document.getElementById("formMessage").className =
+                "error-message";
+            }
+          } catch (fetchErr) {
+            console.error("Network or parsing error:", fetchErr);
+            document.getElementById("formMessage").textContent =
+              "Failed to connect to the server. Please try again.";
+            document.getElementById("formMessage").className = "error-message";
+          }
+        });
+
+      // Function to get query parameter by name
+      function getQueryParameter(name) {
+        const urlParams = new URLSearchParams(window.location.search);
+        return urlParams.get(name);
+      }
+
+      // Autofill sponsor ID from URL if available
+      document.addEventListener("DOMContentLoaded", function () {
+        const sponseridFromUrl = getQueryParameter("sponserid");
+        if (sponseridFromUrl && sponseridFromUrl !== "NotAvailable") {
+          document.getElementById("sponserid").value = sponseridFromUrl;
+        }
+      });
+    </script>
+  </body>
+</html>
