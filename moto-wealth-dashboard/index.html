@@ -854,7 +854,7 @@
             );
 
             // Update referral links for both mobile and desktop
-            const referralLink = `http://127.0.0.1:5500/moto-wealth/register.html?sponserid=${data.user.sponserid || "NotAvailable"}`;
+            const referralLink = `https://moto-wealth-test.vercel.app//register.html?sponserid=${data.user.sponserid || "NotAvailable"}`;
             updateLoadingState("text-to-copy-mobile", referralLink);
             updateLoadingState("text-to-copy-desktop", referralLink);
             console.log("Referral Link Updated:", referralLink);
